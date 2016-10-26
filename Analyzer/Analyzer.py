@@ -8,45 +8,65 @@ Módulo que analiza el código fuente
 """
 
 from Reader import Reader
-from logilab.common.debugger import readline
 
-SourceCode = ""
-
-def setSourceCode(source):
-    """Recibe el codigo fuente
+class Analyzer:
     
-    Parameters
-    ----------
-    source:file -> el Codigo fuente
+    SourceCode=""
+    SourceFile=""
     
-    """
+    def __init__(self):
+        self.SourceCode = ""
     
-    
-    
-
-def AnalizadorCodigo():
-    """Analizador del código
-    Analiza el código para llevar a cabo los comandos
-    
-    Parameters
-    ----------
-    None
-    
-    Returns
-    -------
-    Nothing
-    
-    """    
-    SourceCode = Reader.openFile(helloword.argentos)
+    def setSourceCode(self, nameFile):
+        """Recibe el nombre del codigo fuente
+        Parameters
         
-    line = Reader.readLine(SourceCode)
+        ----------
+        source:file -> el Codigo fuente
+        
+        """
+        
+        self.SourceCode = nameFile
     
-    if(line != 'ARGENTOS'):
-        print "Error en la apertura del archivo"
-    else:
-        line = Reader.readLine(SourceCode)
-        while(line != "ARGENTOS"):
-            print line
-            line = readline(SourceCode)
+    def getSourceCode(self):
+        """Devuelve el nombre del archivo
+        Parameters
+        ----------
+        none
+        
+        Returns
+        -------
+        
+        NameFile:string
+        """
+        
+        return self.SourceCode
+        
+    def AnalizadorCodigo(self):
+        """Analizador del código
+        Analiza el código para llevar a cabo los comandos
+        
+        Parameters
+        ----------
+        
+        None
+        
+        Returns
+        -------
+        Nothing
+        
+        """    
+        self.SourceFile = Reader.openFile(self.SourceCode)
             
-            
+        line = Reader.readLine(self.SourceFile)
+        
+        if(line != 'ARGENTOS\n'):
+            print "Error en la apertura del archivo"
+            exit
+        else:
+            line = Reader.readLine(self.SourceFile)
+            while(line != "ARGENTOS\n"):
+                print line
+                line = Reader.readLine(self.SourceFile)
+                
+                
