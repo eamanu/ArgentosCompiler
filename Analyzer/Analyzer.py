@@ -142,8 +142,10 @@ class Analyzer:
             line = Reader.readLine(self.SourceFile)
             while(line != "ARGENTOS\n"):
                 line = string.split(Reader.readLine(self.SourceFile), " ")
-    
-                for i in range(len(line)):
+                
+                #for i in range(len(line)):
+                i = 0 
+                while i < len(line[i]):
                     #Verifico si viene un comando de cambio de posición del caballo
                     if line[i] == "argento":
                         y = list(line[i+1])[0]
@@ -159,22 +161,47 @@ class Analyzer:
                         line = Reader.readLine(self.SourceFile)
                         while(line != 'ge'):
                             line = string.split(line, " ")
-#FIXME: aquí hay que poner un for comun porque si no continua con el range                            
-                            for j in range(len(line)):
-                                if line[j] == "argento":
-                                    y = list(line[j+1])[0]
-                                    x = list(line[j+1])[1]
-                                    self.caballo.mover(y, x)          
-                                    #TODO: Verificar si es posible moverlo según regla de ajedrez
-                                    j = j + 2 #Aumento el índice
-                                    
-                                if(line[j] == "aaa"):
-                                    y = list(line[j-1])[0]
-                                    x = list(line[j-1])[1]
-                                    
-                                    print y,x
-                                    if(y == 't' and x == 'a'):
-                                        #Ingreso al campo de caracteres
-                                        self.estado = 1
+                            
+                            j = 0
+                            while j < len(line):
+                                #Me encuentro en el campo principal                                 
+                                if self.estado == 0:
+                                    if line[j] == "argento":
+                                        y = list(line[j+1])[0]
+                                        x = list(line[j+1])[1]
+                                        self.caballo.mover(y, x)          
+                                        #TODO: Verificar si es posible moverlo según regla de ajedrez
+                                        j = j + 2 #Aumento el índice
+                                        
+                                    if(line[j] == "aaa"):
+                                        y = list(line[j-1])[0]
+                                        x = list(line[j-1])[1]
+                                        
+                                        if(y == 'T' and x == 'A'):
+                                            #Ingreso al campo de caracteres
+                                            self.estado = 1
+                                        break
+                                
+                                #Me encuentro en el campo de caracteres
+                                elif self.estado == 1:
+                                    if line[j] == "argento":
+                                        y = list(line[j+1])[0]
+                                        x = list(line[j+1])[1]
+                                        self.caballo.mover(y, x)          
+                                        #TODO: Verificar si es posible moverlo según regla de ajedrez
+                                        j = j + 2 #Aumento el índice
+                                        
+                                    if(line[j] == "aaa"):
+                                        y = list(line[j-1])[0]
+                                        x = list(line[j-1])[1]
+                                        
+                                        print y,x
+                                        #Me da el caracter
+                                        
+                                    if(line[j] == "oo"):
+                                        self.estado = 0                                         
+                                        break
+                                
+                                
                                         
                                         
