@@ -251,6 +251,7 @@ class Analyzer:
         else:
             line = Reader.readLine(self.SourceFile)
             while(line != "ARGENTOS\n"):
+                line = string.split(line, "%")[0]
                 line = string.split(string.split(line, "\n")[0], " ")
                 #line = string.split(string.split(Reader.readLine(self.SourceFile), "\n")[0], " ")
                 
@@ -277,6 +278,7 @@ class Analyzer:
                     elif(line[i] == 'ge' and self.geFin == 0):
                         #Se necesita imprimir
                         line = Reader.readLine(self.SourceFile)
+                        line = string.split(line, "%")[0]
                         line = string.split(string.split(line, "\n")[0]," " )
                         while(line[0] != 'ge'):
                             j = 0
@@ -284,6 +286,7 @@ class Analyzer:
                                 #Me encuentro en el campo principal   
                                 if line[0] == '' and len(line) == 1:
                                     line  = Reader.readLine(self.SourceFile)
+                                    line = string.split(line, "%")[0]
                                     line = string.split(string.split(line, "\n")[0]," " )
                                     
                                 if self.estado == 0:
@@ -345,13 +348,16 @@ class Analyzer:
                                         j += 1
                                     
                             line  = Reader.readLine(self.SourceFile)
+                            line = string.split(line, "%")[0]
                             line = string.split(string.split(line, "\n")[0]," " )
+                                                           
                             
                             #Para dar por finalizado el printeo                            
                             if (line[0] == 'ge'):
                                 print self.sParaMostrarEnPantallita
                                 self.sParaMostrarEnPantallita = ""
-                                self.geFin = 1;
+                                self.geFin = 1
+                                j += 1
                     i += 1
                  
                 line = Reader.readLine(self.SourceFile)          
