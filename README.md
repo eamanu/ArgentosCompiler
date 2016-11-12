@@ -9,13 +9,13 @@ Para mayor información del lenguaje visitar: http://freektc.blogspot.com.ar/201
 
 # Características principales
 
-    El control de todo el programa se realiza moviendo una pieza del ajedrez: el caballo.
-    Existen tres campos de movimiento, basados en el tablero de ajedrez: el principal, el de variables y el de caracteres.
-    Las coordenadas de los campos (8x8) son 'A’, ‘R’, ‘G’, ‘E’, ‘N’, ‘T’, ‘O’, ‘S’.
-    Las variables se almacenan en el campo de variables (matriz 8x8), solo se pueden almacenar 64 variables.
-    Las variables son de 1 Bytes.
-    Para asignar valores a las variables, se debe utilizar el campo de caracteres. 
-    Los únicos flujos de control son: condicional y repetitivo.
+* El control de todo el programa se realiza moviendo una pieza del ajedrez: el caballo.
+* Existen tres campos de movimiento, basados en el tablero de ajedrez: el principal, el de variables y el de caracteres.
+* Las coordenadas de los campos (8x8) son 'A’, ‘R’, ‘G’, ‘E’, ‘N’, ‘T’, ‘O’, ‘S’.
+* Las variables se almacenan en el campo de variables (matriz 8x8), solo se pueden almacenar 64 variables.
+* Las variables son de 1 Bytes.
+* Para asignar valores a las variables, se debe utilizar el campo de caracteres. 
+* Los únicos flujos de control son: condicional y repetitivo.
 
 # Fundamentos
 
